@@ -9,7 +9,8 @@
     "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'",
     "sw": "sw-precache --config sw-config.js && cp service-worker.js public",
     "eslint": "eslint **/*.js",
-    "dev": "nodemon -e js,html,pug,css,ejs server.js"
+    "dev": "nodemon -e js,html,pug,css,ejs server.js",
+    "pm2": "set NODE_ENV=production&&pm2 start server.js -i 0 --attach && sudo env PATH=$PATH:/usr/local/bin pm2 startup"
   },
   "repository": {
     "type": "git",
@@ -61,6 +62,7 @@
     "express": "^4.16.3",
     "node-gyp": "^3.7.0",
     "nodemon": "^1.5.19",
+    "pm2": "^3.0.3",
     "pug": "^2.0.3",
     "shortid": "^2.2.12",
     "sw-precache": "^5.2.1"
