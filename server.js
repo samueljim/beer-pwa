@@ -4,10 +4,10 @@ var path = require("path");
 var app = express();
 var port = process.env.PORT || 4000;
 app.set("views", "./views");
-app.set("view engine", "html");
+// app.set("view engine", "html");
 app.use(express.static(path.join(__dirname, "./public")));
 app.get("/", function (req, res) {
-    return res.render("index.pug");
+    res.sendfile('./views/index.html');
 });
 // start the server
 app.listen(port);
