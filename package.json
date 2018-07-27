@@ -1,0 +1,68 @@
+{
+  "name": "beer-pwa",
+  "version": "1.0.0",
+  "description": "ibeer for 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'",
+    "sw": "sw-precache --config sw-config.js && cp service-worker.js public",
+    "eslint": "eslint **/*.js",
+    "dev": "nodemon -e js,html,pug,css,ejs server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samueljim/beer-pwa.git"
+  },
+  "keywords": [
+    "beer",
+    "pwa"
+  ],
+  "author": "samuel henry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samueljim/beer-pwa/issues"
+  },
+  "eslintConfig": {
+    "extends": "plugin:prettier/recommended",
+    "rules": {
+      "prettier/prettier": "error",
+      "comma-dangle": 0,
+      "linebreak-style": 0,
+      "consistent-return": 0,
+      "no-param-reassign": 0,
+      "no-underscore-dangle": 0,
+      "no-shadow": 0,
+      "no-console": 0,
+      "no-plusplus": 0,
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": 2
+    },
+    "env": {
+      "jasmine": true,
+      "mocha": true,
+      "node": true
+    },
+    "plugins": [
+      "chai-friendly",
+      "prettier"
+    ]
+  },
+  "homepage": "https://iwantbeer.now.sh",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
+    "compression": "^1.7.3",
+    "eslint": "^5.2.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "express": "^4.16.3",
+    "node-gyp": "^3.7.0",
+    "nodemon": "^1.5.19",
+    "pug": "^2.0.3",
+    "shortid": "^2.2.12",
+    "sw-precache": "^5.2.1"
+  }
+}
