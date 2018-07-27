@@ -1,7 +1,7 @@
 module.exports = {
-  staticFileGlobs: [
-    'scripts here',
-  ],
-  importScripts: ['/offline.js'],
-  stripPrefix: 'public'
+    staticFileGlobs: [
+        'public/style.css',
+    ],
+    importScripts: ['/offline.js'],
+    stripPrefix: 'public'
 };
