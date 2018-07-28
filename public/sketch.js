@@ -95,4 +95,6 @@ function gyroCallBack(data) {
   gy = data.dm.gy;
   console.log("gx", gx)
   console.log("gy", gy)
+  $('.x').html("gx " + gx);
+  $('.y').html("gy " + gy);
 }

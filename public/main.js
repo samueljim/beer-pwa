@@ -3,7 +3,8 @@
 
     function startGyro() {
         gyro.start(gyroCallBack);
-        // gyro.normalizeGravity(true);
+        $('.message').html("");
+        gyro.normalizeGravity(true);
     }
 
     // function gyroCallBack(data) {
