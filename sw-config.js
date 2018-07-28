@@ -8,7 +8,9 @@ module.exports = {
         'public/images/icons/**.jpg',
         'public/images/beers/**.png',
         'public/404.html',
-        'https://unpkg.com/dexie@latest/dist/dexie.js'
+        'https://unpkg.com/dexie@latest/dist/dexie.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js'
     ],
     importScripts: ['/offline.js'],
     stripPrefix: 'public'

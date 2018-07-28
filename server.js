@@ -29,7 +29,7 @@ app.use(device.capture());
 app.use(express.static(path.join(__dirname, "./public")));
 app.get("/", function (req, res) {
     console.log(req.device.type);
-    if (req.device.type === 'desktop') {
+    if (req.device.type === 'desktop' || req.device.type === 'bot') {
         return res.sendFile(path.join(__dirname, './views/desktop.html'));
     }
     return res.sendFile(path.join(__dirname, './views/index.html'));
