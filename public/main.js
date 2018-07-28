@@ -4,7 +4,10 @@ $(document).ready(function () {
     }
 
     function gyroCallBack(data) {
-        $('.message').html(data.dm.gy)
+        $('.message').html(data.do.alpha)
+        $('.beta').html(data.do.beta)
+        $('.gamma').html(data.do.gamma)
+
         // $('#do_alpha').val(data.do.alpha);
         // $('#do_beta').val(data.do.beta);
         // $('#do_gamma').val(data.do.gamma);
@@ -18,6 +21,9 @@ $(document).ready(function () {
         // $('#dm_beta').val(data.dm.beta);
         // $('#dm_gamma').val(data.dm.gamma);
     }
+    $('body').click(function () {
+        setGyroTop();
+    });
 
     function normalizeGyro() {
         gyro.normalizeGravity(true);

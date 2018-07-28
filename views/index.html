@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Drink Drank</title>
     <meta name="theme-color" content="#ffcc00">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="icon" sizes="192x192" href="/images/icons/logo-192x192.png">
+    <link rel="icon" sizes="192x192" href="/images/icons/android-icon-192x192.png">
     <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='manifest' , href='/manifest.json' />
     <link rel="canonical" href="https://iwantbeer.now.sh/" />
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -18,8 +17,15 @@
 
 <body>
     <section>
-        <h1 class='message'>You don't have a gyro</h1>
-        
+        <div id='background' onclick="setGyroTop()">
+            <h1 class='message'>You don't have a gyro, please on a mobile device </h1>
+            <h1 class='beta'></h1>
+            <h1 class='gamma'></h1>
+            <div id='beer'>
+
+            </div>
+            <div id='object'></div>
+        </div>
     </section>
 </body>
 <!-- import gyronorm.js -->
@@ -27,7 +33,7 @@
 <script src="main.js "></script>
 <script src="camera.js "></script>
 <!-- pwa script -->
-<script src="pwa.js "></script>
+<!-- <script src="pwa.js "></script> -->
 <script src="aframe.min.js"></script>
 <script src="aframe-ar.js"></script>
 
