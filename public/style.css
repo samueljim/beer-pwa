@@ -1,13 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 body {
-    margin: 0px;
-    overflow: hidden;
-    font-family: Monospace;
+    font-family: 'Montserrat', Monospace;
 }
 
-section {
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
     position: absolute;
-    top: 10px;
     width: 100%;
-    text-align: center;
-    z-index: 1;
+    height: 100%;
+    background-color: #ec981a;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+#beer {
+    width: 100%;
+    height: 100%
 }

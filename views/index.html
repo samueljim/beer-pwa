@@ -17,21 +17,24 @@
 </head>
 
 <body>
-    <section>
-        <div id='background' onclick="setGyroTop()">
-            <h1 class='message'>You don't have a gyro, please on a mobile device </h1>
-            <h1 class='beta'></h1>
-            <h1 class='gamma'></h1>
-            <div id='beer'>
-
-            </div>
-            <!-- <div id='object'></div> -->
+    <div id='background' onclick="setGyroTop()">
+        <h1 class='message'>You don't have a gyro, please use a mobile device </h1>
+        <h1 class='beta'></h1>
+        <h1 class='gamma'></h1>
+        <div id='beer'>
+            <!-- particles.js container -->
+            <div id="particles-js"></div>
         </div>
-    </section>
+        <!-- <div id='object'></div> -->
+    </div>
 </body>
 <!-- import gyronorm.js -->
 <script src="gyronorm.complete.js "></script>
-<script src="main.js "></script>
+<script src="main.js"></script>
+
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="beer.js"></script>
+
 <!-- <script src="aframe.min.js"></script>
 <script src="aframe-ar.js"></script> -->
 <!-- <script src="camera.js "></script> -->
