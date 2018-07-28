@@ -34,5 +34,5 @@ if (ssl) {
     console.log(chalk.red("Server started! At https://localhost:" + port));
 }
 
-app.listen(port + 1);
+app.listen(port);
 console.log(chalk.yellow("Server started! At http://localhost:" + (port)));
