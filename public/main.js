@@ -21,6 +21,7 @@ $(document).ready(function () {
         // $('#dm_beta').val(data.dm.beta);
         // $('#dm_gamma').val(data.dm.gamma);
     }
+    
     $('body').click(function () {
         setGyroTop();
     });
