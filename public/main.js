@@ -1,6 +1,9 @@
 $(document).ready(function () {
+    var gyro;
+
     function startGyro() {
         gyro.start(gyroCallBack);
+        gyro.normalizeGravity(true);
     }
 
     function gyroCallBack(data) {
@@ -22,17 +25,6 @@ $(document).ready(function () {
         // $('#dm_gamma').val(data.dm.gamma);
     }
 
-    function determineDirection() {
-
-    }
-
-
-
-
-    $('body').click(function () {
-        setGyroTop();
-    });
-
     function normalizeGyro() {
         gyro.normalizeGravity(true);
     }
@@ -40,6 +32,10 @@ $(document).ready(function () {
     function setGyroTop() {
         gyro.setHeadDirection();
     }
+
+    // $('body').click(function () {
+    //     setGyroTop();
+    // });
     var gyroReady = function () {
         var isAvailable = gyro.isAvailable();
         if (!isAvailable.deviceOrientationAvailable) {
@@ -64,11 +60,13 @@ $(document).ready(function () {
         }
         startGyro();
     }
-
-    var gyro = new GyroNorm();
-    gyro.init()
-        .then(gyroReady)
-        .catch(function (e) {
-            console.error(e);
-        });
+    var gyroInit = function () {
+        gyro = new GyroNorm();
+        gyro.init()
+            .then(gyroReady)
+            .catch(function (e) {
+                console.error(e);
+            });
+    }
+    gyroInit();
 })
