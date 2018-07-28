@@ -1,10 +1,10 @@
 {
   "name": "I want beer now",
   "lang": "en-US",
-  "short_name": "iwantbeer.now",
+  "short_name": "I want beer",
   "theme_color": "#ffcc00",
   "background_color": "#eee",
-  "description": "I want beer now is bring an app from 10 years ago to the modren era",
+  "description": "Iwantbeer.now.sh is bring an app from 10 years ago to the modern era",
   "display": "standalone",
   "start_url": "/",
   "icons": [{
@@ -50,6 +50,12 @@
       "sizes": "192x192",
       "type": "image/png",
       "density": "4.0"
+    },
+    {
+      "src": "images/icons/android-icon-192x192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "density": "10.0"
     }
   ]
 }

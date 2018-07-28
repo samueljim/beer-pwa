@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 body {
     font-family: 'Montserrat', Monospace;
     margin: 0;
@@ -16,21 +15,10 @@ canvas {
     height: 100%;
 }
 
-/* ---- particles.js container ---- */
 
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 200%;
-    background-color: #ec981a;
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-}
 
 #hover {
-    padding-left: auto;
-    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     position: absolute;
 }

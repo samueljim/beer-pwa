@@ -7,6 +7,8 @@ var https = require('https');
 var credentials;
 var ssl = false;
 var device = require('express-device');
+var compression = require('compression');
+
 
 // SSL cert
 var privateKey = fs.readFileSync('sslcert/key.pem', 'utf8');
@@ -22,7 +24,7 @@ console.clear();
 
 var port = process.env.PORT || 4000;
 app.set("views", "./views");
-
+app.use(compression());
 app.use(logger("dev"));
 app.use(device.capture());
 

@@ -5,7 +5,7 @@ db.version(1).stores({
 db.friends.put({
     beerLeft: "0"
 }).then(function () {
-    console.log('Time to drink some beer')
+    // console.log('Time to drink some beer')
 }).catch(function (error) {
     console.log("Ooops: " + error);
 });
