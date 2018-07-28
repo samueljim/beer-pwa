@@ -4,19 +4,19 @@ $(document).ready(function () {
     }
 
     function gyroCallBack(data) {
-        console.info(data.dm.gy);
-        $('#do_alpha').val(data.do.alpha);
-        $('#do_beta').val(data.do.beta);
-        $('#do_gamma').val(data.do.gamma);
-        $('#dm_x').val(data.dm.x);
-        $('#dm_y').val(data.dm.y);
-        $('#dm_z').val(data.dm.z);
-        $('#dm_gx').val(data.dm.gx);
-        $('#dm_gy').val(data.dm.gy);
-        $('#dm_gz').val(data.dm.gz);
-        $('#dm_alpha').val(data.dm.alpha);
-        $('#dm_beta').val(data.dm.beta);
-        $('#dm_gamma').val(data.dm.gamma);
+        $('.message').html(data.dm.gy)
+        // $('#do_alpha').val(data.do.alpha);
+        // $('#do_beta').val(data.do.beta);
+        // $('#do_gamma').val(data.do.gamma);
+        // $('#dm_x').val(data.dm.x);
+        // $('#dm_y').val(data.dm.y);
+        // $('#dm_z').val(data.dm.z);
+        // $('#dm_gx').val(data.dm.gx);
+        // $('#dm_gy').val(data.dm.gy);
+        // $('#dm_gz').val(data.dm.gz);
+        // $('#dm_alpha').val(data.dm.alpha);
+        // $('#dm_beta').val(data.dm.beta);
+        // $('#dm_gamma').val(data.dm.gamma);
     }
 
     function normalizeGyro() {
