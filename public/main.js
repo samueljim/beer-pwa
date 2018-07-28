@@ -1,4 +1,3 @@
-$(document).ready(function () {
     var gyro;
     var deg;
 
@@ -87,4 +86,3 @@ $(document).ready(function () {
             });
     }
     gyroInit();
-})
