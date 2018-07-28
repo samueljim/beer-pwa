@@ -4,28 +4,26 @@ var chalk = require("chalk");
 var path = require("path");
 var fs = require('fs');
 var https = require('https');
+var compression = require('compression');
 var credentials;
 var ssl = false;
+
 // SSL cert
-try {
-    var privateKey = fs.readFileSync('sslcert/key.pem', 'utf8');
-    var certificate = fs.readFileSync('sslcert/cert.pem', 'utf8');
-    credentials = {
-        key: privateKey,
-        cert: certificate
-    };
-    ssl = true;
-} catch (err) {
-    console.log(err)
-}
+var privateKey = fs.readFileSync('sslcert/key.pem', 'utf8');
+var certificate = fs.readFileSync('sslcert/cert.pem', 'utf8');
+credentials = {
+    key: privateKey,
+    cert: certificate
+};
+ssl = true;
 
 var app = express();
-
 // clear console for clean output
 console.clear();
 
 var port = process.env.PORT || 4000;
 app.set("views", "./views");
+app.use(compression);
 
 app.use(logger("dev"));
 
