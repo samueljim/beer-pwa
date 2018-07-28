@@ -9,6 +9,7 @@
     "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'",
     "sw": "sw-precache --config sw-config.js && cp service-worker.js public",
     "eslint": "eslint **/*.js",
+    "openssl": "cd ./sslcert && openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365",
     "dev": "nodemon -e js,html,pug,css,ejs server.js",
     "pm2": "set NODE_ENV=production&&pm2 start server.js -i 0 --attach && sudo env PATH=$PATH:/usr/local/bin pm2 startup"
   },
@@ -60,6 +61,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "node-gyp": "^3.7.0",
     "nodemon": "^1.5.19",
     "pm2": "^3.0.3",

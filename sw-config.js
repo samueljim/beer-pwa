@@ -1,9 +1,13 @@
 module.exports = {
     staticFileGlobs: [
-        'public/style.css',
-        'public/main.js',
-        'public/404.html',
-        'public/pwa.js',
+        'public/css/**.css',
+        'public/**.css',
+        'public/js/**.js',
+        'public/**.js',
+        'public/images/icons/**.png',
+        'public/images/icons/**.jpg',
+        'public/images/beers/**.png',
+        'public/404.html'
     ],
     importScripts: ['/offline.js'],
     stripPrefix: 'public'

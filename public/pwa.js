@@ -1,7 +1,7 @@
 // install serviceWorker after delay
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorkerc
+    navigator.serviceWorker
       .register("/service-worker.js")
       .then(function (reg) {
         reg.onupdatefound = function () {

@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/style.css","d41d8cd98f00b204e9800998ecf8427e"]];
+var precacheConfig = [["/404.html","e4c50d5d1f42a2d38a6fb267ab5a2c7c"],["/gyronorm.complete.js","f96569e6537bfc3bba75c779986430cc"],["/gyronorm.js","db5de72f4ce086023e2867736a75f7e7"],["/main.js","751cb60e7f108214860b94a337fd2895"],["/offline.js","92591d56d31ff0c10a2110f2d80ba8c1"],["/pwa.js","1a655aa4ff46ea3b8d4c7201416eef3b"],["/service-worker.js","2f51f8f2a909b2677ec6d1553cbb3c10"],["/style.css","d41d8cd98f00b204e9800998ecf8427e"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
