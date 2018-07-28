@@ -16,10 +16,13 @@ var drop_r = 10;
 var foam_width = (width^2 + height^2);
 var foam;
 
+// var ww = screen.width;
+// var wh = screen.height;
 
+// console.log(ww + ' ' + wh);
 
 function setup() {
-  createCanvas(600, 800);
+  createCanvas(windowWidth, windowHeight);
 
   // create engine
   engine = Engine.create();
