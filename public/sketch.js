@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // module aliases
 var Engine = Matter.Engine;
 var Body = Matter.Body;
@@ -11,15 +13,17 @@ var world;
 var dropplets = [];
 var left_wall,
     right_wall;
+
 // liquid settings
 var drop_r = 10;
 var foam_width = (width^2 + height^2);
 var foam;
 
-// var ww = screen.width;
-// var wh = screen.height;
+// gravity
+var gx, gy;
 
 // console.log(ww + ' ' + wh);
+   
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -70,4 +74,14 @@ function draw() {
     dropplets[i].show();
     dropplets[i].relate_gravity(0,0);
   }
+  console.log(gx);
+  console.log(gy);
 }
+
+function gyroCallBack(data) {
+  gx = data.dm.gx;
+  gy = data.dm.gy;
+  console.log("gx", gx)
+  console.log("gy", gy)
+}
+});
