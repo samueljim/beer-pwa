@@ -4,7 +4,6 @@ var chalk = require("chalk");
 var path = require("path");
 var fs = require('fs');
 var https = require('https');
-var compression = require('compression');
 var credentials;
 var ssl = false;
 
@@ -15,7 +14,6 @@ credentials = {
     key: privateKey,
     cert: certificate
 };
-ssl = true;
 
 var app = express();
 // clear console for clean output
@@ -23,7 +21,6 @@ console.clear();
 
 var port = process.env.PORT || 4000;
 app.set("views", "./views");
-app.use(compression);
 
 app.use(logger("dev"));
 
@@ -38,4 +35,4 @@ if (ssl) {
 }
 
 app.listen(port + 1);
-console.log(chalk.yellow("Server started! At http://localhost:" + (port + 1)));
+console.log(chalk.yellow("Server started! At http://localhost:" + (port)));
