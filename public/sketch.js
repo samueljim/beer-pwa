@@ -19,14 +19,30 @@ var foam_angle;
 var directional_gx, directional_gy;
 
 // gravity
-var gx = 0, gy = 0;
+var gx = 0,
+  gy = 0;
 var rot;
 var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
 
 
+function preload() {
+  opening = loadSound("./sound/opening.mp3");
+  glug = loadSound("sound/glug.mp3");
+  pouring = loadSound("sound/pouring.mp3");
+  camera = createCapture({
+    audio: false,
+    video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }
+  });
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  opening.play();
 
   // create engine
   engine = Engine.create();
@@ -56,9 +72,10 @@ function setup() {
 
   World.add(world, [foam, bottom_wall, left_wall, right_wall]);
 
-  for(var i = 0; i < 30; i++){
-    dropplets.push(new Dropplet(width/2, 10, drop_r));
+  for (var i = 0; i < 30; i++) {
+    dropplets.push(new Dropplet(width / 2, 10, drop_r));
   }
+
 }
 
 
@@ -73,16 +90,16 @@ function draw() {
   // update foam bubbles
   for (var i = 0; i < dropplets.length; i++) {
     dropplets[i].show();
-    if(gx > 1){
+    if (gx > 1) {
       directional_gx = 0.0001;
-    } else if(gx < -1){
+    } else if (gx < -1) {
       directional_gx = -0.0001;
     } else {
       directional_gx = 0;
     }
-    if(gx > 1){
+    if (gx > 1) {
       directional_gy = -0.00018;
-    } else if(gx < -1){
+    } else if (gx < -1) {
       directional_gy = -0.00018;
     } else {
       directional_gy = 0;
@@ -90,16 +107,16 @@ function draw() {
     dropplets[i].relate_gravity(directional_gx, directional_gy);
   }
   // update foam angle
-  if(gx < -9.8 || gx > 9.8){
+  if (gx < -9.8 || gx > 9.8) {
     foam_angle = -(gx / magic_constant);
-  }else{
-    foam_angle = -1*((gx-(0.6*(gx/2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
+  } else {
+    foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
   }
   // Body.setAngle(foam, -foam_angle);
-  
-  if(foam.angle < foam_angle){
+
+  if (foam.angle < foam_angle) {
     Body.rotate(foam, 0.01);
-  } else if(foam.angle > foam_angle){
+  } else if (foam.angle > foam_angle) {
     Body.rotate(foam, -0.01);
   }
 
