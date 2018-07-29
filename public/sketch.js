@@ -17,6 +17,7 @@ var foam;
 var foam_angle;
 var directional_gx, directional_gy;
 var pour_limit;
+var opposite, adjacent;
 
 // gravity
 var gx = 0,
@@ -26,12 +27,7 @@ var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
 var beer, glug, opening, foamimg;
 
-function calculate_pour_limit(fy){
-  var opposite = (height/2 + fy - 25);
-  var adjacent = (width/2);
-  
-  pour_limit = Math.asin(opposite/adjacent);
-}
+
 
 // preload sound and camera
 function preload() {
@@ -115,7 +111,12 @@ function draw() {
     foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
   }
   // Body.setAngle(foam, -foam_angle);
-  calculate_pour_limit(foam.position.y);
+
+  opposite = (height/2 + foam.position.y - 25);
+  adjacent = (width/2);
+  
+  pour_limit = Math.asin(opposite/adjacent);
+
   if(foam_angle < -pour_limit || foam_angle > pour_limit){
     Body.translate(foam, {x: 0, y: 10});
   }
