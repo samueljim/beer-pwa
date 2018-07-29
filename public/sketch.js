@@ -25,16 +25,26 @@ var gx = 0,
 var rot;
 var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
-var beer, glug, opening, foamimg;
-
+var max = 180;
+var min = 40;
+var numDroplets = Math.random() * (max - min) + min;
+var beer, glass, foamimg, opening, glug;
 
 // preload sound and camera
 function preload() {
-  beer = loadImage("./images/beers/texture1.jpg");
+  beer = loadImage("./images/beers/texture1.png");
   glass = loadImage("./images/beers/glass.jpg");
   foamimg = loadImage("./images/beers/foam.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
+}
+
+function glugStart() {
+  if (glug.isPlaying()) { // .isPlaying() returns a boolean
+    glug.stop();
+  } else {
+    glug.play();
+  }
 }
 
 function setup() {
@@ -57,7 +67,7 @@ function setup() {
   right_wall = Bodies.rectangle(width / 2 + 50, 0, 100, height, {
     isStatic: true
   });
-  bottom_wall = Bodies.rectangle(0, height / 2, width, 100, {
+  bottom_wall = Bodies.rectangle(0, height / 2 + 100, width, 100, {
     isStatic: true
   });
   foam = Bodies.rectangle(0, 0, 1500, 50, {
@@ -70,7 +80,7 @@ function setup() {
 
   World.add(world, [foam, bottom_wall, left_wall, right_wall]);
 
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < numDroplets; i++) {
     dropplets.push(new Dropplet(0, -height / 2 + 10));
   }
 
@@ -81,9 +91,8 @@ function setup() {
 //   dropplets.push(new Dropplet(mouseX, mouseY, drop_r));
 // }
 
-
 function draw() {
-  background(1);
+  background(80);
 
   // update foam bubbles
   for (var i = 0; i < dropplets.length; i++) {
@@ -96,9 +105,9 @@ function draw() {
       directional_gx = 0;
     }
     if (gx > 1) {
-      directional_gy = -0.00018;
+      directional_gy = -0.00019;
     } else if (gx < -1) {
-      directional_gy = -0.00018;
+      directional_gy = -0.00019;
     } else {
       directional_gy = 0;
     }
@@ -118,36 +127,43 @@ function draw() {
     foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
   }
   // Body.setAngle(foam, -foam_angle);
-  if (foam.angle < -pour_limit || foam.angle > pour_limit) {
+  if (foam.angle < -pour_limit) {
     Body.translate(foam, {
-      x: 0,
+      x: 0.5,
       y: 0.5
     });
     //glug.play();
+  } else if (foam.angle > pour_limit) {
+    Body.translate(foam, {
+      x: -0.5,
+      y: 0.5
+    });
+  }
+  if (foam.angle < 0.01 && foam.angle > -0.01) {
+    Body.setPosition(foam, {
+      x: 0,
+      y: foam.position.y
+    });
+    glugStart();
   }
 
   if (foam.angle < foam_angle) {
     Body.rotate(foam, 0.015);
 
-    push();
-    translate(foam.position.x, foam.position.y);
-    rotate(foam.angle);
-    rectMode(CENTER);
-    texture(beer);
 
-    rect(foam.position.x, foam.position.y, 1500, 50);
-    pop();
   } else if (foam.angle > foam_angle) {
     Body.rotate(foam, -0.015);
 
-    push();
-    translate(foam.position.x, foam.position.y);
-    rotate(foam.angle);
-    rectMode(CENTER);
-    texture(beer);
-    rect(foam.position.x, foam.position.y, 1500, 50);
-    pop();
+
   }
+  push();
+  translate(foam.position.x, foam.position.y);
+  rotate(foam.angle);
+  rectMode(CENTER);
+  texture(beer);
+
+  rect(0, 475, 5000, 1000);
+  pop();
 
 
 }
@@ -157,8 +173,6 @@ function gyroCallBack(data) {
   // gyroData = data;
   gx = data.dm.gx;
   gy = data.dm.gy;
-  // console.log("gx", gx)
-  // console.log("gy", gy)
-  $('.x').html("gx " + gx);
-  $('.y').html("gy " + gy);
+  // $('.x').html("gx " + gx);
+  // $('.y').html("gy " + gy);
 }

@@ -15,10 +15,19 @@ canvas {
     height: 100%;
 }
 
-
-
 #hover {
     margin-left: auto;
     margin-right: auto;
     position: absolute;
+}
+
+.heading {
+    padding: 20px;
+}
+
+.heading img {
+    padding: 30px;
+    position: block;
+    margin-left: auto;
+    margin-right: auto;
 }

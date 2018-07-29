@@ -16,16 +16,16 @@
 </head>
 
 <body>
-    <div id='hover'>
-        <h1 class='message'>You are offline currently and something went wrong. If you don't have a gyro, please try a different device</h1>
-        <h1 class='beta'></h1>
-        <h1 class='gamma'></h1>
-        <h1 class='deg'></h1>
-        <h1 class='x'></h1>
-        <h1 class='y'></h1>
-        <h1 class='z'></h1>
-    </div>
-
+    <div id='hover' class='heading'>
+        <div class='message'>
+            <img src="images/icons/android-icon-192x192.png" alt="i want a beer now logo">
+            <h1>I want a beer now</h1>
+            <h2>
+                If you don't have a gyro, please try a different device
+            </h2>
+            <h1 class='x'></h1>
+            <h1 class='y'></h1>
+        </div>
 </body>
 <!-- import gyronorm.js -->
 <script src="gyronorm.complete.min.js "></script>
@@ -36,8 +36,8 @@
 <script src="sketch.js"></script>
 <script src="main.js"></script>
 <!-- local storage script -->
-<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-<script scr='dixie.js'></script>
+<!-- <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+<script scr='dixie.js'></script> -->
 
 <script>
     $("body").click(function () {
