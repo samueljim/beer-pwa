@@ -26,16 +26,16 @@ var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
 var beer, glug, opening, foamimg;
 
-function calculate_pour_limit(fy){
-  var opposite = (height/2 + fy - 25);
-  var adjacent = (width/2);
-  
-  pour_limit = Math.asin(opposite/adjacent);
+function calculate_pour_limit(fy) {
+  var opposite = (height / 2 + fy - 25);
+  var adjacent = (width / 2);
+
+  pour_limit = Math.asin(opposite / adjacent);
 }
 
 // preload sound and camera
 function preload() {
-  beer = loadImage("./images/beers/texture2.jpg");
+  beer = loadImage("./images/beers/texture3.jpg");
   foamimg = loadImage("./images/beers/foam.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
@@ -43,7 +43,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  //opening.play();
+  opening.play();
 
   // create engine
   engine = Engine.create();
@@ -52,16 +52,16 @@ function setup() {
 
   // run engine
   Engine.run(engine);
-  
+
 
   // foam and walls
-  left_wall = Bodies.rectangle(-width/2 - 50, 0, 100, height, {
+  left_wall = Bodies.rectangle(-width / 2 - 50, 0, 100, height, {
     isStatic: true
   });
-  right_wall = Bodies.rectangle(width/2 + 50, 0, 100, height, {
+  right_wall = Bodies.rectangle(width / 2 + 50, 0, 100, height, {
     isStatic: true
   });
-  bottom_wall = Bodies.rectangle(0, height/2, width, 100, {
+  bottom_wall = Bodies.rectangle(0, height / 2, width, 100, {
     isStatic: true
   });
   foam = Bodies.rectangle(0, 0, 1500, 50, {
@@ -75,7 +75,7 @@ function setup() {
   World.add(world, [foam, bottom_wall, left_wall, right_wall]);
 
   for (var i = 0; i < 60; i++) {
-    dropplets.push(new Dropplet(0, -height/2 + 10));
+    dropplets.push(new Dropplet(0, -height / 2 + 10));
   }
 
 }
@@ -116,8 +116,11 @@ function draw() {
   }
   // Body.setAngle(foam, -foam_angle);
   calculate_pour_limit(foam.position.y);
-  if(foam_angle < -pour_limit || foam_angle > pour_limit){
-    Body.translate(foam, {x: 0, y: 10});
+  if (foam_angle < -pour_limit || foam_angle > pour_limit) {
+    Body.translate(foam, {
+      x: 0,
+      y: 10
+    });
   }
 
   if (foam.angle < foam_angle) {
