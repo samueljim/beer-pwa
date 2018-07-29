@@ -28,36 +28,10 @@ var magic_constant = 6.2452399669;
 
 // preload sound and camera
 function preload() {
-<<<<<<< HEAD
-  // opening = loadSound("./sound/opening.mp3");
-  // glug = loadSound("sound/glug.mp3");
-  // pouring = loadSound("sound/pouring.mp3");
-  // camera = createCapture({
-  //   audio: false,
-  //   video: {
-  //     facingMode: {
-  //       exact: "environment"
-  //     }
-  //   }
-  // });
-=======
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
   pouring = loadSound("./sound/pouring.mp3");
-  // try {
-  //   camera = createCapture({
-  //     audio: false,
-  //     video: {
-  //       facingMode: {
-  //         exact: "user"
-  //       }
-  //     }
-  //   });
-  //   // camera = false;
-  // } catch (err) {
-  //   camera = false;
-  // }
->>>>>>> b5703bc5b14dd0c39d413b8a078dc78a4917dc4e
+
 }
 
 function setup() {
