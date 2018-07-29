@@ -114,9 +114,9 @@ function draw() {
   opposite = (height / 2 + foam.position.y - 25);
   adjacent = (width / 2);
 
-  pour_limit = Math.asin(opposite / adjacent);
+  pour_limit = Math.atan(opposite / adjacent);
 
-  if (foam_angle < -pour_limit || foam_angle > pour_limit) {
+  if (foam.angle < -pour_limit || foam.angle > pour_limit) {
     Body.translate(foam, {
       x: 0,
       y: 10
