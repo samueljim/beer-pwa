@@ -28,16 +28,21 @@ var magic_constant = 6.2452399669;
 
 function preload() {
   opening = loadSound("./sound/opening.mp3");
-  glug = loadSound("sound/glug.mp3");
-  pouring = loadSound("sound/pouring.mp3");
-  camera = createCapture({
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  });
+  glug = loadSound("./sound/glug.mp3");
+  pouring = loadSound("./sound/pouring.mp3");
+  // try {
+  //   camera = createCapture({
+  //     audio: false,
+  //     video: {
+  //       facingMode: {
+  //         exact: "user"
+  //       }
+  //     }
+  //   });
+  //   // camera = false;
+  // } catch (err) {
+  //   camera = false;
+  // }
 }
 
 function setup() {
