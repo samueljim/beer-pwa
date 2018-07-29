@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" lang="en" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Drink Drank</title>
-    <meta name="theme-color" content="#ffcc00">
-    <link rel="icon" sizes="192x192" href="/images/icons/logo-192x192.png">
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <title>offline - I want beer now</title>
+    <meta name="theme-color" content="#e7b900">
+    <link rel="icon" sizes="192x192" href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" href="/images/icons/offline.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='manifest' , href='/manifest.json' />
     <link rel="canonical" href="https://iwantbeer.now.sh/" />
@@ -16,8 +16,31 @@
 </head>
 
 <body>
-    <h1>There is no connection to Beer</h1>
+    <div id='hover'>
+        <h1 class='message'>You are offline currently and something went wrong. If you don't have a gyro, please try a different device</h1>
+        <h1 class='beta'></h1>
+        <h1 class='gamma'></h1>
+        <h1 class='deg'></h1>
+        <h1 class='x'></h1>
+        <h1 class='y'></h1>
+        <h1 class='z'></h1>
+    </div>
+
 </body>
+<!-- import gyronorm.js -->
+<script src="gyronorm.complete.min.js "></script>
+
+<script src="matter.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script src="dropplet.js"></script>
+<script src="sketch.js"></script>
+<script src="main.js"></script>
+<!-- local storage script -->
+<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+<script scr='dixie.js'></script>
+
 <script>
     $("body").click(function () {
         window.location.reload();
@@ -27,7 +50,5 @@
         window.location.reload();
     });
 </script>
-<script src="gyronorm.complete.js"></script>
-<script src="main.js"></script>
 
 </html>
