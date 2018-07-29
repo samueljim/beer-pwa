@@ -27,7 +27,7 @@ if ("serviceWorker" in navigator) {
         console.error("Error during service worker registration:", e)
       })
   })
-}
+} 
 
 // install PWA
 window.addEventListener("beforeinstallprompt", e => {
