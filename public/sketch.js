@@ -111,14 +111,6 @@ function draw() {
 
   pour_limit = Math.atan(opposite / adjacent);
 
-  if (foam.angle < -pour_limit || foam.angle > pour_limit) {
-    Body.translate(foam, {
-      x: 0,
-      y: 0.5
-    });
-    //glug.play();
-  }
-
   // update foam angle
   if (gx < -9.3 || gx > 9.3) {
     foam_angle = -(gx / magic_constant);
@@ -126,6 +118,13 @@ function draw() {
     foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
   }
   // Body.setAngle(foam, -foam_angle);
+  if (foam.angle < -pour_limit || foam.angle > pour_limit) {
+    Body.translate(foam, {
+      x: 0,
+      y: 0.5
+    });
+    //glug.play();
+  }
 
   if (foam.angle < foam_angle) {
     Body.rotate(foam, 0.015);
@@ -136,7 +135,7 @@ function draw() {
     rectMode(CENTER);
     texture(beer);
 
-    rect(foam.position.x, (foam.position.y + 475), 1000, 1000);
+    rect(foam.position.x, foam.position.y, 1500, 50);
     pop();
   } else if (foam.angle > foam_angle) {
     Body.rotate(foam, -0.015);
@@ -146,7 +145,7 @@ function draw() {
     rotate(foam.angle);
     rectMode(CENTER);
     texture(beer);
-    rect(foam.position.x, (foam.position.y + 475), 1500, 1000);
+    rect(foam.position.x, foam.position.y, 1500, 50);
     pop();
   }
 
