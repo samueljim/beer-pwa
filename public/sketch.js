@@ -30,7 +30,7 @@ var beer, glug, opening, foamimg;
 
 // preload sound and camera
 function preload() {
-  beer = loadImage("./images/beers/texture3.jpg");
+  beer = loadImage("./images/beers/texture1.jpg");
   foamimg = loadImage("./images/beers/foam.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
@@ -111,13 +111,16 @@ function draw() {
   }
   // Body.setAngle(foam, -foam_angle);
 
-  opposite = (height/2 + foam.position.y - 25);
-  adjacent = (width/2);
-  
-  pour_limit = Math.asin(opposite/adjacent);
+  opposite = (height / 2 + foam.position.y - 25);
+  adjacent = (width / 2);
 
-  if(foam_angle < -pour_limit || foam_angle > pour_limit){
-    Body.translate(foam, {x: 0, y: 10});
+  pour_limit = Math.asin(opposite / adjacent);
+
+  if (foam_angle < -pour_limit || foam_angle > pour_limit) {
+    Body.translate(foam, {
+      x: 0,
+      y: 10
+    });
   }
 
   if (foam.angle < foam_angle) {
