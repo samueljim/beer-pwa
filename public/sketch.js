@@ -24,19 +24,18 @@ var gx = 0,
 var rot;
 var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
-
+var beer, glug, opening;
 
 // preload sound and camera
 function preload() {
+  beer = loadImage("./images/beers/texture2.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
-  pouring = loadSound("./sound/pouring.mp3");
-
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // opening.play();
+  opening.play();
 
   // create engine
   engine = Engine.create();
@@ -115,6 +114,8 @@ function draw() {
     translate(foam.position.x, foam.position.y);
     rotate(foam.angle);
     rectMode(CENTER);
+    texture(beer);
+
     rect(0, 0, 1500, 50);
     pop();
   } else if (foam.angle > foam_angle) {
@@ -124,10 +125,11 @@ function draw() {
     translate(foam.position.x, foam.position.y);
     rotate(foam.angle);
     rectMode(CENTER);
+    texture(beer);
     rect(0, 0, 1500, 50);
     pop();
   }
-  
+
 
 }
 
