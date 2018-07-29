@@ -26,23 +26,24 @@ var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
 
 
+// preload sound and camera
 function preload() {
-  opening = loadSound("./sound/opening.mp3");
-  glug = loadSound("sound/glug.mp3");
-  pouring = loadSound("sound/pouring.mp3");
-  camera = createCapture({
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  });
+  // opening = loadSound("./sound/opening.mp3");
+  // glug = loadSound("sound/glug.mp3");
+  // pouring = loadSound("sound/pouring.mp3");
+  // camera = createCapture({
+  //   audio: false,
+  //   video: {
+  //     facingMode: {
+  //       exact: "environment"
+  //     }
+  //   }
+  // });
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  opening.play();
+  // opening.play();
 
   // create engine
   engine = Engine.create();
@@ -116,9 +117,24 @@ function draw() {
 
   if (foam.angle < foam_angle) {
     Body.rotate(foam, 0.01);
+
+    push();
+    translate(foam.position.x, foam.position.y);
+    rotate(foam.angle);
+    rectMode(CENTER);
+    rect(0, 0, 1500, 50);
+    pop();
   } else if (foam.angle > foam_angle) {
     Body.rotate(foam, -0.01);
+
+    push();
+    translate(foam.position.x, foam.position.y);
+    rotate(foam.angle);
+    rectMode(CENTER);
+    rect(0, 0, 1500, 50);
+    pop();
   }
+  
 
 }
 
