@@ -13,7 +13,6 @@ var left_wall,
   right_wall;
 
 // liquid settings
-var drop_r = 10;
 var foam;
 var foam_angle;
 var directional_gx, directional_gy;
@@ -24,18 +23,19 @@ var gx = 0,
 var rot;
 var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
-var beer, glug, opening;
+var beer, glug, opening, foamimg;
 
 // preload sound and camera
 function preload() {
   beer = loadImage("./images/beers/texture2.jpg");
+  foamimg = loadImage("./images/beers/foam.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  opening.play();
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  //opening.play();
 
   // create engine
   engine = Engine.create();
@@ -44,18 +44,19 @@ function setup() {
 
   // run engine
   Engine.run(engine);
+  
 
   // foam and walls
-  left_wall = Bodies.rectangle(-50, height / 2, 100, height, {
+  left_wall = Bodies.rectangle(-width/2 - 50, 0, 100, height, {
     isStatic: true
   });
-  right_wall = Bodies.rectangle(width + 50, height / 2, 100, height, {
+  right_wall = Bodies.rectangle(width/2 + 50, 0, 100, height, {
     isStatic: true
   });
-  bottom_wall = Bodies.rectangle(width / 2, height, width, 100, {
+  bottom_wall = Bodies.rectangle(0, height/2, width, 100, {
     isStatic: true
   });
-  foam = Bodies.rectangle(width / 2, height / 2, 1500, 50, {
+  foam = Bodies.rectangle(0, 0, 1500, 50, {
     isStatic: true
   });
 
@@ -65,8 +66,8 @@ function setup() {
 
   World.add(world, [foam, bottom_wall, left_wall, right_wall]);
 
-  for (var i = 0; i < 30; i++) {
-    dropplets.push(new Dropplet(width / 2, 10, drop_r));
+  for (var i = 0; i < 60; i++) {
+    dropplets.push(new Dropplet(0, -height/2 + 10));
   }
 
 }
@@ -116,7 +117,7 @@ function draw() {
     rectMode(CENTER);
     texture(beer);
 
-    rect(0, 0, 1500, 50);
+    rect(foam.position.x, (foam.position.y + 475), 1000, 1000);
     pop();
   } else if (foam.angle > foam_angle) {
     Body.rotate(foam, -0.01);
@@ -126,7 +127,7 @@ function draw() {
     rotate(foam.angle);
     rectMode(CENTER);
     texture(beer);
-    rect(0, 0, 1500, 50);
+    rect(foam.position.x, (foam.position.y + 475), 1500, 1000);
     pop();
   }
 
