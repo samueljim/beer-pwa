@@ -16,6 +16,7 @@ var left_wall,
 var foam;
 var foam_angle;
 var directional_gx, directional_gy;
+var pour_limit;
 
 // gravity
 var gx = 0,
@@ -24,6 +25,13 @@ var rot;
 var magic_constant = 6.2452399669;
 // console.log(ww + ' ' + wh);
 var beer, glug, opening, foamimg;
+
+function calculate_pour_limit(fy){
+  var opposite = (height/2 + fy - 25);
+  var adjacent = (width/2);
+  
+  pour_limit = Math.asin(opposite/adjacent);
+}
 
 // preload sound and camera
 function preload() {
@@ -98,7 +106,7 @@ function draw() {
     } else {
       directional_gy = 0;
     }
-    dropplets[i].relate_gravity(directional_gx, directional_gy);
+    dropplets[i].relate_gravity(directional_gx, directional_gy); // make dropplet gravity relative to angle of liquid
   }
   // update foam angle
   if (gx < -9.8 || gx > 9.8) {
@@ -107,6 +115,10 @@ function draw() {
     foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
   }
   // Body.setAngle(foam, -foam_angle);
+  calculate_pour_limit(foam.position.y);
+  if(foam_angle < -pour_limit || foam_angle > pour_limit){
+    Body.translate(foam, {x: 0, y: 10});
+  }
 
   if (foam.angle < foam_angle) {
     Body.rotate(foam, 0.01);
