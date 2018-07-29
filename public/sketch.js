@@ -31,6 +31,7 @@ var beer, glug, opening, foamimg;
 // preload sound and camera
 function preload() {
   beer = loadImage("./images/beers/texture1.jpg");
+  glass = loadImage("./images/beers/glass.jpg");
   foamimg = loadImage("./images/beers/foam.jpg");
   opening = loadSound("./sound/opening.mp3");
   glug = loadSound("./sound/glug.mp3");
@@ -82,7 +83,7 @@ function setup() {
 
 
 function draw() {
-  background(56);
+  background(1);
 
   // update foam bubbles
   for (var i = 0; i < dropplets.length; i++) {
@@ -103,14 +104,8 @@ function draw() {
     }
     dropplets[i].relate_gravity(directional_gx, directional_gy); // make dropplet gravity relative to angle of liquid
   }
-  // update foam angle
-  if (gx < -9.8 || gx > 9.8) {
-    foam_angle = -(gx / magic_constant);
-  } else {
-    foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
-  }
-  // Body.setAngle(foam, -foam_angle);
 
+  // lower liquid level if the tilt is past the top corners
   opposite = (height / 2 + foam.position.y - 25);
   adjacent = (width / 2);
 
@@ -119,12 +114,21 @@ function draw() {
   if (foam.angle < -pour_limit || foam.angle > pour_limit) {
     Body.translate(foam, {
       x: 0,
-      y: 10
+      y: 0.5
     });
+    //glug.play();
   }
 
+  // update foam angle
+  if (gx < -9.3 || gx > 9.3) {
+    foam_angle = -(gx / magic_constant);
+  } else {
+    foam_angle = -1 * ((gx - (0.6 * (gx / 2))) / magic_constant); // don't touch this line, it is actual magic pls just leave it be...
+  }
+  // Body.setAngle(foam, -foam_angle);
+
   if (foam.angle < foam_angle) {
-    Body.rotate(foam, 0.01);
+    Body.rotate(foam, 0.015);
 
     push();
     translate(foam.position.x, foam.position.y);
@@ -135,7 +139,7 @@ function draw() {
     rect(foam.position.x, (foam.position.y + 475), 1000, 1000);
     pop();
   } else if (foam.angle > foam_angle) {
-    Body.rotate(foam, -0.01);
+    Body.rotate(foam, -0.015);
 
     push();
     translate(foam.position.x, foam.position.y);
